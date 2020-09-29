@@ -24,9 +24,13 @@
 ;; myPackages contains a list of package names
 (defvar myPackages
   '(better-defaults                 ;; Set up some better Emacs defaults
-    zenburn-theme                   ;; Theme
+    elpy                            ;; Emacs Lisp Python Environment
+    ein                             ;; Emacs iPython Notebook
+    flycheck                        ;; On the fly syntax checking
+    py-autopep8                     ;; Run autopep8 on save
+    blacken                         ;; Black formatting on save
     magit                           ;; Git integration
-    
+    zenburn-theme                   ;; Theme
     )
   )
 
@@ -42,7 +46,7 @@
 ;; ===================================
 
 (setq inhibit-startup-message t)    ;; Hide the startup message
-(load-theme 'zenburn t)            ;; Load material theme
+(load-theme 'zenburn t)            ;; Load Zenburn theme
 (global-linum-mode t)               ;; Enable line numbers globally
 
 ;; User-Defined init.el ends here
@@ -52,8 +56,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (arduino-mode flycheck zenburn-theme material-theme better-defaults))))
+   '(arduino-mode flycheck zenburn-theme material-theme better-defaults)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
