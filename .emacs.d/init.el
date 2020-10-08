@@ -44,7 +44,7 @@
 ;; ===================================
 
 (setq inhibit-startup-message t)    ;; Hide the startup message
-(load-theme 'zenburn t)            ;; Load Zenburn theme
+(load-theme 'zenburn t)
 (global-linum-mode t)               ;; Enable line numbers globally
 
 ;; ====================================
@@ -54,11 +54,22 @@
 ;; Enable elpy
 (elpy-enable)
 
+;; Use IPython for REPL
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+
 ;; Enable Flycheck
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+;; Automatic Blackening on save
+(add-hook 'elpy-mode-hook (lambda ()
+                            (add-hook 'before-save-hook
+                                      'elpy-black-fix-code nil t)))
 
 ;; User-Defined init.el ends here
 (custom-set-variables
