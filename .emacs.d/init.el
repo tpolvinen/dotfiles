@@ -28,7 +28,8 @@
     flycheck                        ;; On the fly syntax checking
     blacken                         ;; Black formatting on save
     magit                           ;; Git integration
-    zenburn-theme                   ;; Theme
+   ;; zenburn-theme                   ;; Dark theme
+    plan9-theme                     ;; Light theme
     )
   )
 
@@ -44,7 +45,8 @@
 ;; ===================================
 
 (setq inhibit-startup-message t)    ;; Hide the startup message
-(load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
+(load-theme 'plan9 t)
 (global-linum-mode t)               ;; Enable line numbers globally
 
 ;; ====================================
